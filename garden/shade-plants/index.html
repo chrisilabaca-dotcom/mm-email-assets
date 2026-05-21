@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plants for the Shade Garden</title>
+  <meta name="description" content="A printable guide to the best plants for full shade. Hostas, ferns, hellebores, astilbe, and more.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #f4f5f1;
+      --paper:     #ffffff;
+      --ink:       #1a2620;
+      --ink-2:     #3d4d44;
+      --ink-3:     #6d7a72;
+      --rule:      #d6d9d2;
+      --rule-soft: #e6e8e3;
+      --moss:      #4a7c59;
+      --moss-dark: #2d4f37;
+
+      --font-head: 'Fraunces', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      padding: 32px 16px 64px;
+    }
+
+    .sheet {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--paper);
+      padding: 64px 72px;
+      box-shadow: 0 30px 80px rgba(26, 38, 32, 0.10);
+      border-radius: 4px;
+      border: 1px solid var(--rule-soft);
+    }
+
+    /* ── HEADER ── */
+    .head {
+      text-align: left;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 40px;
+    }
+
+    .head__eyebrow {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 14px;
+    }
+
+    .head__title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .head__title em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--moss-dark);
+    }
+
+    .head__sub {
+      font-size: 0.95rem;
+      color: var(--ink-2);
+      max-width: 56ch;
+      line-height: 1.6;
+    }
+
+    /* ── PLANT ENTRY ── */
+    .plant {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--rule-soft);
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .plant:last-child { border-bottom: none; }
+
+    .plant__head {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .plant__name {
+      font-family: var(--font-head);
+      font-size: 1.55rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    .plant__latin {
+      font-family: var(--font-head);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--ink-3);
+      font-weight: 300;
+    }
+
+    .plant__desc {
+      font-size: 0.95rem;
+      color: var(--ink-2);
+      line-height: 1.75;
+      margin: 10px 0 14px;
+      max-width: 62ch;
+    }
+
+    .plant__facts {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 4px 16px;
+      font-size: 0.82rem;
+      color: var(--ink-2);
+      padding: 12px 16px;
+      background: #f8f9f5;
+      border-left: 2px solid var(--moss);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .plant__facts dt {
+      font-weight: 500;
+      color: var(--moss-dark);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      padding-top: 3px;
+    }
+
+    .plant__facts dd { color: var(--ink-2); }
+
+    /* ── HOSTAS VARIETIES SUB-BOX ── */
+    .varieties {
+      margin-top: 16px;
+      padding: 16px 18px;
+      background: #f8f9f5;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+
+    .varieties__label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--moss-dark);
+      margin-bottom: 10px;
+    }
+
+    .varieties ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+
+    .varieties li {
+      font-size: 0.85rem;
+      color: var(--ink-2);
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .varieties li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 9px;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--moss);
+    }
+
+    .varieties li em {
+      font-family: var(--font-head);
+      font-style: italic;
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    /* ── FOOTER ── */
+    .foot {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .foot__brand {
+      font-family: var(--font-head);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--ink-2);
+    }
+
+    .foot__note {
+      font-size: 0.75rem;
+      color: var(--ink-3);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      body { padding: 16px 0; }
+      .sheet {
+        padding: 32px 24px;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+      }
+      .varieties ul { grid-template-columns: 1fr; }
+      .plant__facts { grid-template-columns: 1fr; gap: 2px; }
+      .plant__facts dt { padding-top: 8px; }
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: white; padding: 0; }
+      .sheet {
+        max-width: none;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+      }
+      .plant { padding: 18px 0; }
+      .plant__facts { background: #f4f5f1; }
+      .varieties { background: #f4f5f1; }
+      @page { margin: 18mm 18mm 18mm 18mm; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <header class="head">
+    <p class="head__eyebrow">A printable guide</p>
+    <h1 class="head__title">Plants for the <em>Shade Garden</em></h1>
+    <p class="head__sub">Six perennials and two ground covers that thrive in full shade. All are hardy in UK conditions, low-maintenance once established, and return reliably year after year.</p>
+  </header>
+
+  <article class="plant">
+    <div class="plant__head">
+      <h2 class="plant__name">Hostas</h2>
+      <span class="plant__latin">Hosta spp.</span>
+    </div>
+    <p class="plant__desc">The structural centrepiece of any shade planting. Leaves range from the size of a playing card to a dinner plate, in greens, blues, golds, and variegated patterns. Once established, they are nearly indestructible and grow larger each year. Plant in spring or early autumn into rich, moisture-retentive soil. Watch for slugs in spring as new leaves emerge.</p>
+    <dl class="plant__facts">
+      <dt>Conditions</dt><dd>Full shade to part shade, moist soil</dd>
+      <dt>Flowers</dt><dd>Tall spikes of white or lavender bells in summer</dd>
+      <dt>Height</dt><dd>15cm to 90cm depending on variety</dd>
+      <dt>Hardiness</dt><dd>Fully hardy, dies back each winter</dd>
+    </dl>
+    <div class="varieties">
+      <p class="varieties__label">Recommended varieties</p>
+      <ul>
+        <li><em>'Sum and Substance'</em> giant gold-green</li>
+        <li><em>'Halcyon'</em> blue-grey, slug resistant</li>
+        <li><em>'June'</em> gold centre, blue margin</li>
+        <li><em>'Frances Williams'</em> bold ribbed, two-tone</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="plant">
+    <div class="plant__head">
+      <h2 class="plant__name">Ferns</h2>
+      <span class="plant__latin">Athyrium &amp; Dryopteris spp.</span>
+    </div>
+    <p class="plant__desc">The structural backbone of any shade planting. Ferns evolved beneath forest canopies and are extremely good at thriving in low light. They give texture and movement no other plant family offers. Athyrium (lady fern) and Dryopteris (male fern) are the most reliable hardy choices for UK gardens.</p>
+    <dl class="plant__facts">
+      <dt>Conditions</dt><dd>Full shade, moist soil with good leaf mould</dd>
+      <dt>Flowers</dt><dd>None, valued for foliage</dd>
+      <dt>Height</dt><dd>30cm to 120cm</dd>
+      <dt>Hardiness</dt><dd>Fully hardy, most are deciduous</dd>
+    </dl>
+  </article>
+
+  <article class="plant">
+    <div class="plant__head">
+      <h2 class="plant__name">Hellebores</h2>
+      <span class="plant__latin">Helleborus orientalis</span>
+    </div>
+    <p class="plant__desc">One of very few plants that flower in deep winter under a bare canopy. Nodding waxy blooms appear in burgundy, cream, pink, slate, and near-black from January through April, when nothing else dares. Long-lived, drought-tolerant once established, and remarkably unfussy. Cut back old leaves in late winter so flowers show clearly.</p>
+    <dl class="plant__facts">
+      <dt>Conditions</dt><dd>Full to part shade, any decent soil</dd>
+      <dt>Flowers</dt><dd>January to April</dd>
+      <dt>Height</dt><dd>40cm to 60cm</dd>
+      <dt>Hardiness</dt><dd>Fully hardy and evergreen</dd>
+    </dl>
+  </article>
+
+  <article class="plant">
+    <div class="plant__head">
+      <h2 class="plant__name">Lily of the Valley</h2>
+      <span class="plant__latin">Convallaria majalis</span>
+    </div>
+    <p class="plant__desc">A British shade-border classic. Spreads quietly via underground rhizomes to form a dense, weed-suppressing mat. Small white bell flowers in May are powerfully scented. Plant once and it will take care of itself indefinitely. Note: all parts are toxic if eaten, so keep away from pets and small children.</p>
+    <dl class="plant__facts">
+      <dt>Conditions</dt><dd>Full to part shade, prefers moist but tolerant of dry</dd>
+      <dt>Flowers</dt><dd>White, fragrant, May</dd>
+      <dt>Height</dt><dd>15cm to 25cm</dd>
+      <dt>Hardiness</dt><dd>Fully hardy, dies back over winter</dd>
+    </dl>
+  </article>
+
+  <article class="plant">
+    <div class="plant__head">
+      <h2 class="plant__name">Astilbe</h2>
+      <span class="plant__latin">Astilbe spp.</span>
+    </div>
+    <p class="plant__desc">Astilbe brings the only real vertical drama to the shade garden. Feathery plumes in white, pink, red, and magenta rise above fern-like foliage in midsummer. Needs reliable moisture to perform well: plant near a damp patch or water regularly in dry spells. Flowers can be left standing into autumn for a rusted, sculptural look.</p>
+    <dl class="plant__facts">
+      <dt>Conditions</dt><dd>Part to full shade, consistently moist soil</dd>
+      <dt>Flowers</dt><dd>June to August, 6 to 8 weeks of bloom</dd>
+      <dt>Height</dt><dd>40cm to 120cm</dd>
+      <dt>Hardiness</dt><dd>Fully hardy, dies back over winter</dd>
+    </dl>
+  </article>
+
+  <article class="plant">
+    <div class="plant__head">
+      <h2 class="plant__name">Sweet Woodruff</h2>
+      <span class="plant__latin">Galium odoratum</span>
+    </div>
+    <p class="plant__desc">A low, spreading ground cover that forms a dense green carpet beneath trees where grass refuses to grow. Tiny white flowers appear in late spring, and dried leaves smell of fresh hay. Excellent under shrubs and in dry shade, though it will spread enthusiastically where happy.</p>
+    <dl class="plant__facts">
+      <dt>Conditions</dt><dd>Full to part shade, tolerates dry shade</dd>
+      <dt>Flowers</dt><dd>White, tiny, May to June</dd>
+      <dt>Height</dt><dd>15cm to 20cm</dd>
+      <dt>Spread</dt><dd>Vigorous, plant where you want coverage</dd>
+    </dl>
+  </article>
+
+  <article class="plant">
+    <div class="plant__head">
+      <h2 class="plant__name">Ajuga (Bugle)</h2>
+      <span class="plant__latin">Ajuga reptans</span>
+    </div>
+    <p class="plant__desc">One of the most versatile ground covers for shade. Dark, sometimes bronze foliage looks attractive year-round, and short spikes of blue-purple flowers appear in spring. Spreads by runners, roots where it touches soil, and is virtually indestructible once it gets going. Excellent for suppressing weeds.</p>
+    <dl class="plant__facts">
+      <dt>Conditions</dt><dd>Full to part shade, any soil</dd>
+      <dt>Flowers</dt><dd>Blue-purple spikes, April to June</dd>
+      <dt>Height</dt><dd>15cm in flower, 10cm foliage</dd>
+      <dt>Hardiness</dt><dd>Fully hardy and evergreen</dd>
+    </dl>
+  </article>
+
+  <footer class="foot">
+    <span class="foot__brand">The Shadow Garden</span>
+    <span class="foot__note">A guide to growing in full shade</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
