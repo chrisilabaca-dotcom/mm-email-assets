@@ -278,23 +278,28 @@
     <h2 class="card-h">Credit or refund?</h2>
     <p class="card-intro">We'll sort it today. If you've got more than one child booked tonight, pick the option you want applied to all of them, or drop us a note if it's different per child.</p>
 
-    <form id="cancel-form" action="https://formspree.io/f/xpqnrpbz" method="POST">
+    <form id="cancel-form" action="https://formspree.io/f/xpqnrpbz" method="POST" autocomplete="off">
       <input type="hidden" name="_subject" value="Tonight cancellation · parent response">
       <input type="hidden" name="session_date" value="2026-05-22">
+      <!-- Decoy fields to absorb Chrome autofill (hidden off-screen) -->
+      <div style="position:absolute;left:-9999px;height:0;overflow:hidden;" aria-hidden="true">
+        <input type="text" name="fake_name" tabindex="-1" autocomplete="name">
+        <input type="email" name="fake_email" tabindex="-1" autocomplete="email">
+      </div>
 
       <div class="field">
         <label for="parent_name">Your name</label>
-        <input type="text" id="parent_name" name="parent_name" required autocomplete="name">
+        <input type="text" id="parent_name" name="submitter_name" required autocomplete="off" data-form-type="other">
       </div>
 
       <div class="field">
         <label for="email">Email</label>
-        <input type="text" id="email" name="email" required inputmode="email" autocomplete="email">
+        <input type="text" id="email" name="submitter_email" required inputmode="email" autocomplete="off" data-form-type="other">
       </div>
 
       <div class="field">
         <label for="children">Child / children booked tonight</label>
-        <input type="text" id="children" name="children" required placeholder="e.g. Jasmine, Ezra">
+        <input type="text" id="children" name="children_names" required placeholder="e.g. Jasmine, Ezra" autocomplete="off" data-form-type="other">
       </div>
 
       <div class="field">
@@ -334,21 +339,7 @@
 </div>
 
 <script>
-  // Prefill from URL params: ?parent=Kate&children=Jasmine,%20Ezra&email=kate.jones1704@gmail.com
-  const params = new URLSearchParams(window.location.search)
-  const setIf = (id, key) => {
-    const v = params.get(key)
-    if (v) document.getElementById(id).value = v
-  }
-  setIf('parent_name', 'parent')
-  setIf('children', 'children')
-  setIf('email', 'email')
-
-  // Greet by name if we have it
-  const parent = params.get('parent')
-  if (parent) {
-    document.getElementById('hero-greeting').textContent = `Hi ${parent}, pick how you'd like us to handle tonight's booking. Takes ten seconds.`
-  }
+  // No URL pre-fill, no browser autofill — every parent starts with an empty form.
 
   // AJAX submit so we stay on this page and show our own thanks state
   const form = document.getElementById('cancel-form')
