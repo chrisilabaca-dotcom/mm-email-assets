@@ -271,7 +271,7 @@
   <div class="hero" id="hero">
     <span class="eyebrow">Friday 25 September</span>
     <h1>Tonight's class is <span class="acc">cancelled.</span></h1>
-    <p>Please tick below so we know you've seen this. If we don't hear from you, we'll give you a call before the session.</p>
+    <p>Please tick below so we know you've seen this, and choose credit or refund. If we don't hear from you, we'll give you a call before the session.</p>
   </div>
 
   <div class="card" id="form-card">
@@ -301,6 +301,18 @@
         <input type="text" id="children" name="children_names" required autocomplete="off" data-form-type="other">
       </div>
 
+      <fieldset class="field" style="border:0;padding:0;margin:0 0 18px;">
+        <legend style="font-family:'Inter','Helvetica Neue',Arial,sans-serif;font-size:12px;font-weight:700;color:#0A1628;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 8px;padding:0;">Credit or refund?</legend>
+        <label class="tick" for="opt-credit" style="margin-bottom:10px;">
+          <input type="radio" id="opt-credit" name="preference" value="keep credit" required>
+          <span><strong>Keep the credit.</strong> It's already back on your account for the next class.</span>
+        </label>
+        <label class="tick" for="opt-refund" style="margin-bottom:0;">
+          <input type="radio" id="opt-refund" name="preference" value="REFUND requested" required>
+          <span><strong>Refund me instead.</strong> We'll refund tonight's session to you and confirm by email.</span>
+        </label>
+      </fieldset>
+
       <div class="field">
         <label for="notes">Anything you'd like to tell us? (optional)</label>
         <textarea id="notes" name="notes"></textarea>
@@ -314,7 +326,7 @@
   <div class="success hidden" id="success-card" tabindex="-1">
     <span class="eyebrow">Thank you</span>
     <h2>Got it, no need for a call.</h2>
-    <p>Your child's session credit is back on your account, ready for the next class you book.</p>
+    <p id="ok-msg">Your child's session credit is back on your account, ready for the next class you book.</p>
     <p style="margin-top:14px;">Sorry again for the short notice. We'll see you soon.</p>
     <p style="margin-top:20px; font-size:14px;">Chris<br><span class="mono" style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.55);">Movement Matters</span></p>
   </div>
@@ -337,6 +349,7 @@
       if (!res.ok) throw new Error('submit failed')
       document.getElementById('form-card').classList.add('hidden')
       document.getElementById('hero').classList.add('hidden')
+      if (new FormData(form).get('preference') === 'REFUND requested') document.getElementById('ok-msg').textContent = "We'll process your refund and email you once it's done. Refunds usually take 5 to 10 working days to show."
       const ok = document.getElementById('success-card'); ok.classList.remove('hidden'); ok.focus()
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch (_) {
